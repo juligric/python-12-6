@@ -4,12 +4,14 @@ import Dashboard from './pages/Dashboard'
 import Insumos from './pages/Insumos'
 import Productos from './pages/Productos'
 import Baristas from './pages/Baristas'
+import Estadisticas from './pages/Estadisticas'
 
 const PAGES = {
-  dashboard: Dashboard,
-  insumos:   Insumos,
-  productos: Productos,
-  baristas:  Baristas,
+  dashboard:     Dashboard,
+  insumos:       Insumos,
+  productos:     Productos,
+  baristas:      Baristas,
+  estadisticas:  Estadisticas,
 }
 
 export default function App() {

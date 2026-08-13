@@ -3,6 +3,7 @@ const NAV = [
   { id: 'insumos',   label: 'Insumos',    icon: '📦' },
   { id: 'productos', label: 'Productos',  icon: '☕' },
   { id: 'baristas',  label: 'Baristas',   icon: '👤' },
+  { id: 'estadisticas', label: 'Estadísticas', icon: '📊' },
 ]
 
 const sidebarStyle = {

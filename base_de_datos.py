@@ -1,5 +1,6 @@
 import os
 import psycopg
+import pandas as pd
 from dotenv import load_dotenv
 from modelos import Insumo, Productos, Baristas
 
@@ -84,6 +85,33 @@ def borrar_producto(id):
         with conn.cursor() as cur:
             cur.execute("DELETE FROM productos WHERE id=%s", (id,))
             conn.commit()
+
+
+# ------- Importación masiva desde CSV (Parte 2 de la actividad) -------
+def importar_productos_desde_csv(ruta_csv="data/productos.csv"):
+    # Pandas lee el CSV y arma un DataFrame (una tabla en memoria)
+    df = pd.read_csv(ruta_csv)
+    for _, fila in df.iterrows():          # recorro el DataFrame fila por fila
+        crear_producto(                    # y uso el mismo alta que ya usa el CRUD
+            fila["nombre_plato"],
+            fila["categoria"],
+            float(fila["precio"]),
+            int(fila["id_insumo_principal"]),
+        )
+    return len(df)
+
+
+# ------- Estadísticas con Pandas (Parte 3 de la actividad) -------
+def estadisticas_precios_productos():
+    with conectar() as conn:
+        df = pd.read_sql("SELECT precio FROM productos", conn)
+
+    return {
+        "cantidad": int(df["precio"].count()),
+        "media": round(float(df["precio"].mean()), 2),
+        "mediana": round(float(df["precio"].median()), 2),
+        "moda": [round(float(v), 2) for v in df["precio"].mode().tolist()],
+    }
 
 def listar_baristas():
     with conectar() as conn:

@@ -107,3 +107,9 @@ def put_barista(id: int, datos: BaristaIn):
 def delete_barista(id: int):
     bd.borrar_barista(id)
     return {"ok": True}
+
+
+# ============================== ESTADÍSTICAS ==============================
+@app.get("/estadisticas/productos")
+def get_estadisticas_productos():
+    return bd.estadisticas_precios_productos()

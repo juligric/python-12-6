@@ -1,0 +1,16 @@
+nombre_plato,categoria,precio,id_insumo_principal
+Espresso,Bebida caliente,1200,1
+Americano,Bebida caliente,1500,1
+Cappuccino Clásico,Bebida caliente,1800,1
+Latte Vainilla,Bebida caliente,1800,4
+Mocha,Bebida caliente,2000,6
+Té Verde,Bebida caliente,1200,11
+Chocolatada Caliente,Bebida caliente,1800,6
+Frappé de Café,Bebida fría,2200,1
+Limonada,Bebida fría,1500,11
+Cold Brew,Bebida fría,2200,1
+Medialuna,Comida,900,11
+Tostado Jamón y Queso,Comida,2200,11
+Brownie,Postre,1800,6
+Cheesecake,Postre,2500,2
+Alfajor de Maicena,Postre,900,11
