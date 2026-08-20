@@ -4,10 +4,10 @@ import pandas as pd
 from dotenv import load_dotenv
 from modelos import Insumo, Productos, Baristas
 
-load_dotenv()  # lee tu archivo .env
+load_dotenv()  
 
 def conectar():
-    url = os.getenv("DATABASE_URL")          # agarra la URL de Neon de tu .env
+    url = os.getenv("DATABASE_URL")          
     return psycopg.connect(url)    
 
 
@@ -87,12 +87,12 @@ def borrar_producto(id):
             conn.commit()
 
 
-# ------- Importación masiva desde CSV (Parte 2 de la actividad) -------
+
 def importar_productos_desde_csv(ruta_csv="data/productos.csv"):
-    # Pandas lee el CSV y arma un DataFrame (una tabla en memoria)
+   
     df = pd.read_csv(ruta_csv)
-    for _, fila in df.iterrows():          # recorro el DataFrame fila por fila
-        crear_producto(                    # y uso el mismo alta que ya usa el CRUD
+    for _, fila in df.iterrows():         
+        crear_producto(                    
             fila["nombre_plato"],
             fila["categoria"],
             float(fila["precio"]),
@@ -101,7 +101,7 @@ def importar_productos_desde_csv(ruta_csv="data/productos.csv"):
     return len(df)
 
 
-# ------- Estadísticas con Pandas (Parte 3 de la actividad) -------
+
 def estadisticas_precios_productos():
     with conectar() as conn:
         df = pd.read_sql("SELECT precio FROM productos", conn)
@@ -121,7 +121,7 @@ def listar_baristas():
             )
             baristas = []
             for fila in cur.fetchall():
-                baristas.append(Baristas(*fila))     # fila -> objeto Baristas
+                baristas.append(Baristas(*fila))     
             return baristas
  
  
@@ -152,4 +152,4 @@ def borrar_barista(id):
         with conn.cursor() as cur:
             cur.execute("DELETE FROM baristas WHERE id=%s", (id,))
             conn.commit() 
-         # abre la conexión a la base
+        
