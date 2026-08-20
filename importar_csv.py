@@ -1,5 +1,5 @@
 # Script de una sola corrida: importa data/productos.csv a la tabla productos.
-# Uso: python importar_csv.py
+# Uso python importar_csv.py
 
 import base_de_datos as bd
 
